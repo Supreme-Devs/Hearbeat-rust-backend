@@ -1,0 +1,4 @@
+// for taking input from the user in any endpoint we need to use serde for serialization and deserialization
+// json is not the first class citizen in rust
+
+// we write the structs and then we use the structures for input and output in json format
