@@ -1,20 +1,28 @@
 // this is like a class
-pub struct Store {
-    conn: Connection,
-}
+
+use diesel::pg::PgConnection;
+use diesel::prelude::*;
+use std::env::{self, VarError};
+
+pub mod schema;
+// pub mod config;
 
 // we can write from scratch how to connect to a db what bytes to send but we would be using a library
 // sqlx or diesel
 
+pub struct Store {
+    pub conn: PgConnection,
+}
 // follow this up
 // https://diesel.rs/guides/getting-started
 
-impl Default for Store {
-    // this is like the constructor function which is called when the object is created
-    fn default() -> Self {
-        Self {
-            conn: Connection::open("sqlite:///db.sqlite").unwrap(),
-        }
+impl Store {
+    fn default() -> Result<Self, ConnectionError> {
+        let db_url: String = env::var("DATABASE_URL")
+            .unwrap_or_else(|_| panic!("Please provide the DATABASE_URL environment variable"));
+
+        let conn: PgConnection = PgConnection::establish(&db_url)?;
+        Ok(Self { conn })
     }
 }
 
