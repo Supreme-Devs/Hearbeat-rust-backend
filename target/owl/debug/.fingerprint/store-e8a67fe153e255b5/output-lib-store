@@ -1,6 +1,0 @@
-2025-08-20T12:42:52.058Z INFO  [rustowlc::core] start borrowck of DefId(0:3 ~ store[b703]::add)
-2025-08-20T12:42:52.074Z INFO  [rustowlc::core::analyze] facts of DefId(0:3 ~ store[b703]::add) prepared; start analyze of DefId(0:3 ~ store[b703]::add)
-2025-08-20T12:42:52.077Z INFO  [rustowlc::core::analyze] start re-computing borrow check with dump: true
-2025-08-20T12:42:52.077Z INFO  [rustowlc::core] borrow checked: 1 / 1
-2025-08-20T12:42:52.079Z INFO  [rustowlc::core::analyze] borrow check finished
-2025-08-20T12:42:52.080Z INFO  [rustowlc::core] analyzed one item of /Users/subhajitchaudhury/Desktop/code-playground/projects/betterstack/betterstack-rust/store/src/lib.rs
