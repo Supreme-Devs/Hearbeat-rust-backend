@@ -1,11 +1,12 @@
 // this is like a class
 
+use config::Config;
 use diesel::pg::PgConnection;
 use diesel::prelude::*;
 use std::env::{self, VarError};
 
+pub mod config;
 pub mod schema;
-// pub mod config;
 
 // we can write from scratch how to connect to a db what bytes to send but we would be using a library
 // sqlx or diesel
@@ -18,10 +19,8 @@ pub struct Store {
 
 impl Store {
     fn default() -> Result<Self, ConnectionError> {
-        let db_url: String = env::var("DATABASE_URL")
-            .unwrap_or_else(|_| panic!("Please provide the DATABASE_URL environment variable"));
-
-        let conn: PgConnection = PgConnection::establish(&db_url)?;
+        let config = Config::default();
+        let conn: PgConnection = PgConnection::establish(&config.db_url)?;
         Ok(Self { conn })
     }
 }
