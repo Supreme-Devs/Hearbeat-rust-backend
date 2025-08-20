@@ -2,3 +2,10 @@
 // json is not the first class citizen in rust
 
 // we write the structs and then we use the structures for input and output in json format
+
+
+for using the library store 
+
+add store as a dependency in the api/cargo.toml
+and in the file where you want to use the store 
+use store::Store;

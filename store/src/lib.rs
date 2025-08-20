@@ -1,1 +1,9 @@
+pub struct Store {}
 
+impl Store {
+    pub fn create_user(&self) {
+        println!("create user");
+    }
+
+    pub fn create_website(&self) {}
+}
