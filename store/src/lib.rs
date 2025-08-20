@@ -5,5 +5,7 @@ impl Store {
         println!("create user");
     }
 
-    pub fn create_website(&self) {}
+    pub fn create_website(&self) -> String {
+        String::from("1")
+    }
 }
