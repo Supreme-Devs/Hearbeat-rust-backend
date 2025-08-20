@@ -9,3 +9,31 @@ for using the library store
 add store as a dependency in the api/cargo.toml
 and in the file where you want to use the store 
 use store::Store;
+
+
+// start a postgres container in docker 
+docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres  postgres  
+// link to db 
+DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
+
+
+// connecting to db via diesel 
+step 1 : adding diesel to our store
+step 2 : downloading the CLI
+step 3 : diesel setup creates migration with a up and down file 
+step 4 : adding database url to the .env file
+step 5 : writing the raw sql query in the migration file 
+step 6 : run diesel migration run
+step 7 : this generate the schema.rs file in the library
+
+
+
+
+for confirming go inside the container and run the command
+docker exec -it a63e0af67451 sh
+
+psql -U postgres
+\connect postgres or you <dbname>
+\dt
+
+
