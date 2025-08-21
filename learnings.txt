@@ -29,11 +29,31 @@ step 7 : this generate the schema.rs file in the library
 
 
 
-for confirming go inside the container and run the command
-docker exec -it a63e0af67451 sh
 
-psql -U postgres
-\connect postgres or you <dbname>
-\dt
+// For starting the postgres server in docker from scratch 
+step 1  : Make sure the postgres is running in the background
+step 2 : docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres  postgres 
+step 3 : docker exec -it <container_id> psql -U postgres -c "CREATE DATABASE rust_app;"
+step 4 : change the link in .env to this DATABASE_URL=postgres://postgres:postgres@localhost:5432/rust_app 
+step 5 : write raw sql query in the migration file
+step 6 : run diesel migration run
+step 7 : this generate the schema.rs file in the library
 
 
+
+// for confirming go inside the container and run the command
+step 1 : docker exec -it <container_id> sh
+step 2 : psql -U postgres
+step 3 : listing the databases \l
+step 4 : for connecting to the db /c <db_name >
+step 5 : for viewing all the tables \dt
+
+
+
+// docker exec -it my_postgres psql -U postgres 
+
+
+// Steps after automation
+step 1 : bash setup/setup.sh 
+step 2 : go inside the store folder and diesel migration run
+step 3 : bash setup/list_table.sh 
