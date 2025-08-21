@@ -6,7 +6,7 @@ use poem::{
 };
 
 use crate::{request_input::CreateWebsiteInput, request_output::CreateWebsiteOutput};
-use store::Store;
+use store::store::Store;
 pub mod request_input;
 pub mod request_output;
 
@@ -20,7 +20,7 @@ fn create_website(Json(_data): Json<CreateWebsiteInput>) -> Json<CreateWebsiteOu
     // let url = data.url;
     // persisiting the data to a database
     // sqlx => pg library or diesel => prisma if we add here whats the point of having a monorepo
-    let store = Store {};
+    let store = Store::default();
     let id = store.create_website();
     let response = CreateWebsiteOutput { id };
     Json(response)
